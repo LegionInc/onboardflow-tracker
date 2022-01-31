@@ -1,0 +1,57 @@
+<div>
+    This is the common javascript content:
+    <pre>
+        <code class="language-html">
+            &#x3C;script type=&#x22;text/javascript&#x22; id=&#x22;of-loader&#x22;&#x3E;
+                <code class="language-javascript">
+
+                    function custom_event(eventValue, eventMeta) {
+                        OnboardFlowLoader.triggerCustomEvent(eventValue, eventMeta)
+                    }
+
+                    function track(settings) {
+                        var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+                        po.src = `https://media.onboardflow.com/gen/tracker/${settings.site_key}.min.js`;
+                        po.onload = po.onreadystatechange = function() {var rs = this.readyState; if (rs && rs != 'complete' && rs != 'loaded') return;
+                        OnboardFlowLoader = new OnboardFlowLoaderClass(); OnboardFlowLoader.identify(window.onboardFlowSettings);};
+                        var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+                    }
+    
+                    window.onboardFlowSettings = {
+                        "site_key": "yS1yZLgw", // Site Key Example
+                        "user": {
+                            "id": "300",        // Your internal User ID for the logged in user
+                            "customer_id": "300", // The payment providers Customer ID for the logged in user
+                            "email": "300@email.com", // Email address of the logged in user (optional)
+                            "image_url": "https://onboardflow-production.s3.amazonaws.com/media/defaults/user_default_image.png", // Profile Image URL of the logged in user (optional)
+                            "has_payment_method": "1", // Has the user added a payment card?
+                            "subscription": {
+                                "name": "level_1", // The name of the plan the user is on
+                                "status": "active", // Set to either trialing, active or cancelled
+                                "value": 10.0, // The value of the plan
+                                "interval": "MONTH", // Set to either DAY, WEEK, MONTH or YEAR
+                                "currency": "USD", // I.e. USD, EUR, GBP etc
+                                "started_at": 1583020800, // Date the account was created (unix timestamp format required in seconds)
+                                "trial_start": 1583020800, // Date the trial started (or is due to start) (unix timestamp format required in seconds)
+                                "trial_end": 1585440000 // Date the trial is due to end (unix timestamp format required in seconds)
+                            }
+                        },
+                        "custom_properties": {
+                            "custom_property_one": 100,  // Example value
+                            "custom_property_two": 0,  // Example value
+                            "custom_property_three": 0 // Example value
+                        }
+                    }
+
+                    track(window.onboardFlowSettings)
+                </code>
+            &#x3C;/script&#x3E;
+        </code>
+    </pre>
+    <p>
+        Content for window.onboardFlowSettings must be set before using the track function.
+    </p>
+    <p>
+        Subscription type (trialing, active or cancelled) must set using the value: window.onboardFlowSettings.user.subscription.status.
+    </p>
+</div>
