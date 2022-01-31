@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+    <head>
+        <title></title>
+        <script>
+                function track(settings) {
+                    var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+                    // po.src = `https://media.onboardflow.com/gen/tracker/${site_key}.min.js`;
+                    po.src = `file:///home/guidion/Devs/legion/onboardflow-tracker/${settings.site_key}.min.js`;
+                    po.onload = po.onreadystatechange = function() {var rs = this.readyState; if (rs && rs != 'complete' && rs != 'loaded') return;
+                    OnboardFlowLoader = new OnboardFlowLoaderClass(); OnboardFlowLoader.identify(window.onboardFlowSettings);};
+                    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+                }
+
+                onboardFlowSettings = {
+                    "site_key": "yS1yZLgw", // Site Key Example
+                    "user": {
+                        "id": "300",        // Your internal User ID for the logged in user
+                        "customer_id": "300", // The payment providers Customer ID for the logged in user
+                        "email": "300@email.com", // Email address of the logged in user (optional)
+                        "image_url": "https://onboardflow-production.s3.amazonaws.com/media/defaults/user_default_image.png", // Profile Image URL of the logged in user (optional)
+                        "has_payment_method": "0", // Has the user added a payment card?
+                        "subscription": {
+                            "name": "level_1", // The name of the plan the user is on
+                            "status": "trialing", // Set to either trialing, active or cancelled
+                            "value": 0.0, // The value of the plan
+                            "interval": "WEEK", // Set to either DAY, WEEK, MONTH or YEAR
+                            "currency": "USD", // I.e. USD, EUR, GBP etc
+                            "started_at": 1583020800, // Date the account was created (unix timestamp format required in seconds)
+                            "trial_start": 1583020800, // Date the trial started (or is due to start) (unix timestamp format required in seconds)
+                            "trial_end": 1585440000 // Date the trial is due to end (unix timestamp format required in seconds)
+                        }
+                    },
+                    "custom_properties": {
+                        "custom_property_one": 100,  // Example value
+                        "custom_property_two": 0,  // Example value
+                        "custom_property_three": 0 // Example value
+                    }
+                }
+
+                // Event: Page View
+                // Status: trialing
+                track(onboardFlowSettings)
+        </script>
+    </head>
+    <body>
+        <h3>This is a example for Page View and click events</h3>
+        <div>
+            <p>
+                <a href="#" class="of-track" data-of-id="click_one">
+                  Click One
+                </a>
+            </p>
+            <p>
+                <a href="#" class="of-track" data-of-id="click_two">
+                  Click Two
+                </a>
+            </p>
+        </div>
+    </body>
+</html>
