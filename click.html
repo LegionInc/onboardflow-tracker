@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+    <head>
+        <title>Click Event</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/vs.min.css" integrity="sha512-AVoZ71dJLtHRlsgWwujPT1hk2zxtFWsPlpTPCc/1g0WgpbmlzkqlDFduAvnOV4JJWKUquPc1ZyMc5eq4fRnKOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+        <script type="text/javascript" id="of-loader">
+
+            function custom_event(eventValue, eventMeta) {
+                OnboardFlowLoader.triggerCustomEvent(eventValue, eventMeta)
+            }
+
+            function track(settings) {
+                var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+                // po.src = `https://media.onboardflow.com/gen/tracker/${site_key}.min.js`;
+                po.src = `file:///home/guidion/Devs/legion/onboardflow-tracker/${settings.site_key}.min.js`;
+                po.onload = po.onreadystatechange = function() {var rs = this.readyState; if (rs && rs != 'complete' && rs != 'loaded') return;
+                OnboardFlowLoader = new OnboardFlowLoaderClass(); OnboardFlowLoader.identify(window.onboardFlowSettings);};
+                var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+            }
+
+            onboardFlowSettings = {
+                "site_key": "yS1yZLgw", // Site Key Example
+                "user": {
+                    "id": "300",        // Your internal User ID for the logged in user
+                    "customer_id": "300", // The payment providers Customer ID for the logged in user
+                    "email": "300@email.com", // Email address of the logged in user (optional)
+                    "image_url": "https://onboardflow-production.s3.amazonaws.com/media/defaults/user_default_image.png", // Profile Image URL of the logged in user (optional)
+                    "has_payment_method": "0", // Has the user added a payment card?
+                    "subscription": {
+                        "name": "level_1", // The name of the plan the user is on
+                        "status": "trialing", // Set to either trialing, active or cancelled
+                        "value": 0.0, // The value of the plan
+                        "interval": "WEEK", // Set to either DAY, WEEK, MONTH or YEAR
+                        "currency": "USD", // I.e. USD, EUR, GBP etc
+                        "started_at": 1583020800, // Date the account was created (unix timestamp format required in seconds)
+                        "trial_start": 1583020800, // Date the trial started (or is due to start) (unix timestamp format required in seconds)
+                        "trial_end": 1585440000 // Date the trial is due to end (unix timestamp format required in seconds)
+                    }
+                },
+                "custom_properties": {
+                    "custom_property_one": 100,  // Example value
+                    "custom_property_two": 0,  // Example value
+                    "custom_property_three": 0 // Example value
+                }
+            }
+
+            track(onboardFlowSettings)
+        </script>
+    </head>
+    <body>
+        <h3>This is a example for Page View and click events</h3>
+        <div>
+            <p>
+                When you access this page the event "Page View" will be registered. If you click on link or button the event "Click" will be registered.
+            </p>
+            <p>
+                Content for window.onboardFlowSettings must be setted using javascript code before use track function.
+            </p>
+            <p>
+                For subscription type definition (trialing, active or cancelled) you must set the value in window.onboardFlowSettings.user.subscription.status.
+            </p>
+        </div>
+        <br />
+        <div>
+            <p>Click using link:
+                <a href="#" class="of-track" data-of-id="click_one">
+                  Click One
+                </a>
+            </p>
+            <pre>
+                <code class="language-html">
+                    &#x3C;p&#x3E;Click using link:
+                        &#x3C;a href=&#x22;#&#x22; class=&#x22;of-track&#x22; data-of-id=&#x22;click_one&#x22;&#x3E;
+                            Click One
+                        &#x3C;/a&#x3E;
+                    &#x3C;/p&#x3E;
+                </code>
+            </pre>
+        </div>
+        <div>
+            <p>Click using button:
+                <button class="of-track" data-of-id="click_two">
+                  Click Two
+                </button>
+            </p>
+            <pre>
+                <code class="language-html">
+                    &#x3C;p&#x3E;Click using button:
+                        &#x3C;button class=&#x22;of-track&#x22; data-of-id=&#x22;click_two&#x22;&#x3E;
+                            Click Two
+                        &#x3C;/button&#x3E;
+                    &#x3C;/p&#x3E;
+                </code>
+            </pre>  
+        </div>
+        <br />
+        <div>
+            This is the common javascript content:
+            <pre>
+                <code class="language-html">
+                    &#x3C;script type=&#x22;text/javascript&#x22; id=&#x22;of-loader&#x22;&#x3E;
+                        <code class="language-javascript">
+
+                            function custom_event(eventValue, eventMeta) {
+                                OnboardFlowLoader.triggerCustomEvent(eventValue, eventMeta)
+                            }
+
+                            function track(settings) {
+                                var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+                                // po.src = `https://media.onboardflow.com/gen/tracker/${site_key}.min.js`;
+                                po.src = `file:///home/guidion/Devs/legion/onboardflow-tracker/${settings.site_key}.min.js`;
+                                po.onload = po.onreadystatechange = function() {var rs = this.readyState; if (rs && rs != 'complete' && rs != 'loaded') return;
+                                OnboardFlowLoader = new OnboardFlowLoaderClass(); OnboardFlowLoader.identify(window.onboardFlowSettings);};
+                                var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+                            }
+            
+                            window.onboardFlowSettings = {
+                                "site_key": "yS1yZLgw", // Site Key Example
+                                "user": {
+                                    "id": "300",        // Your internal User ID for the logged in user
+                                    "customer_id": "300", // The payment providers Customer ID for the logged in user
+                                    "email": "300@email.com", // Email address of the logged in user (optional)
+                                    "image_url": "https://onboardflow-production.s3.amazonaws.com/media/defaults/user_default_image.png", // Profile Image URL of the logged in user (optional)
+                                    "has_payment_method": "0", // Has the user added a payment card?
+                                    "subscription": {
+                                        "name": "level_1", // The name of the plan the user is on
+                                        "status": "trialing", // Set to either trialing, active or cancelled
+                                        "value": 0.0, // The value of the plan
+                                        "interval": "WEEK", // Set to either DAY, WEEK, MONTH or YEAR
+                                        "currency": "USD", // I.e. USD, EUR, GBP etc
+                                        "started_at": 1583020800, // Date the account was created (unix timestamp format required in seconds)
+                                        "trial_start": 1583020800, // Date the trial started (or is due to start) (unix timestamp format required in seconds)
+                                        "trial_end": 1585440000 // Date the trial is due to end (unix timestamp format required in seconds)
+                                    }
+                                },
+                                "custom_properties": {
+                                    "custom_property_one": 100,  // Example value
+                                    "custom_property_two": 0,  // Example value
+                                    "custom_property_three": 0 // Example value
+                                }
+                            }
+
+                            track(window.onboardFlowSettings)
+                        </code>
+                    &#x3C;/script&#x3E;
+                </code>
+            </pre>
+        </div>
+    </body>
+</html>
