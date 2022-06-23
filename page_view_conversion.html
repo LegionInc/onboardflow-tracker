@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
     <head>
-        <title>Page View Event</title>
+        <title>Page View Event with Conversion</title>
         <link rel="stylesheet" href="styles.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/vs.min.css" integrity="sha512-AVoZ71dJLtHRlsgWwujPT1hk2zxtFWsPlpTPCc/1g0WgpbmlzkqlDFduAvnOV4JJWKUquPc1ZyMc5eq4fRnKOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.4.0/build/highlight.min.js"></script>
@@ -19,7 +19,7 @@
                     "has_payment_method": "0", // Has the user added a payment card?
                     "subscription": {
                         "name": "level_1", // The name of the plan the user is on
-                        "status": "trialing", // Set to either trialing, active or cancelled
+                        "status": "active", // Set to either trialing, active or cancelled
                         "value": 10.0, // The value of the plan
                         "interval": "MONTH", // Set to either DAY, WEEK, MONTH or YEAR
                         "currency": "USD", // I.e. USD, EUR, GBP etc
@@ -36,21 +36,25 @@
             }
 
             track(onboardFlowSettings)
-            getCode()
+            getCode(true)
         </script>
     </head>
     <body>
         <ul>
-            <li><a class="active" href="page_view.html">Page View Event</a></li>
+            <li><a href="page_view.html">Page View Event</a></li>
             <li><a href="click.html">Click Event</a></li>
             <li><a href="custom_event.html">Custom Event</a></li>
-            <li><a href="page_view_conversion.html">Page View Event with Conversion</a></li>
+            <li><a class="active" href="page_view_conversion.html">Page View Event with Conversion</a></li>
         </ul>
         <br />
-        <h3>This is a example for Page View event</h3>
+        <h3>This is a example for Page View event with Conversion</h3>
         <div>
             <p>
-                When you access this page, the event "Page View" is registered and a new trial (if it doesn't already exists) is tracked.
+                When you access this page, the event "Page View" is registered along with a conversion.
+            </p>
+            <p>
+                To make a customer conversion you must set window.onboardFlowSettings.user.subscription.status to "active" 
+                and window.onboardFlowSettings.user.has_payment_method to "1".
             </p>
         </div>
         <br />
